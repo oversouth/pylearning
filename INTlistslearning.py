@@ -27,3 +27,17 @@ for gamer in gamers:
     gamer['gamerscore']
     if gamer['gamerscore'] > 2500:
        print(gamer['name'])
+
+hero = {
+    'name': 'Franklin',
+    'money': 14895967,
+    'power': 16
+}
+print(hero['name'])
+print(hero['money']*8)
+
+if hero['power'] >   6:
+    print("Franklin is strong")
+
+if hero['power'] < 6:
+   print("Franklin is not so strong")
