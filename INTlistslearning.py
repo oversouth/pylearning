@@ -17,15 +17,15 @@ for NBdata in numbers:
 print(Hvar)
 
 gamers = [
-    {'name': 'oversouth','gamerscore': 8350},
+    {'name': 'oversouth','gamerscore': 8305},
     {'name': 'doomguy', 'gamerscore': 4800},
-    {'name': 'Scorpio', 'gamerscore': 2650},
-    {'name': 'coolcoldy', 'gamerscore': 1800}
+    {'name': 'Scorpio', 'gamerscore': 2135},
+    {'name': 'coolcoldy', 'gamerscore': 1035}
 ]
 
 for gamer in gamers:
     gamer['gamerscore']
-    if gamer['gamerscore'] > 2500:
+    if gamer['gamerscore'] > 2300:
        print(gamer['name'])
 
 hero = {
