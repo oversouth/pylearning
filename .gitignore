@@ -2,3 +2,4 @@
 *.xml
 *.iml
 t.meOVERSOUTH.py
+__pycache__/
