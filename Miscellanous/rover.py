@@ -15,7 +15,7 @@ def hello():
 
 def mood_answer():
     mood = input('Whats your mood?')
-    if mood == "nice":x
+    if mood == "nice":
         print("thats cool")
     else:
       print("sorry to hear")
