@@ -12,4 +12,3 @@ if num1 > num2:
 elif num1 < num2:
     print(num2, " is greater than ", num1)
     # hello from zed!
-    #
