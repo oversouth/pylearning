@@ -8,4 +8,4 @@ for n in numbers:
     if n < min:
         min = n
 print("Максимум:", max)
-print("Минимум:", min)
+print("Минимум:", min) 
