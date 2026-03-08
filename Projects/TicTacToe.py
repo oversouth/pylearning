@@ -1,10 +1,10 @@
-import turtle as t #add turtle
-t.setup(600, 600) #resolution
-t.title("TicTacToe") #window title
-def settings(t): #initial setup
+import turtle as t
+t.setup(600, 600)
+t.title("TicTacToe")
+def settings(t):
     t.speed(100)
     t.pensize(6)
-def field(t): #game field
+def field(t):
     t.penup()
     t.goto(-300, 100)
     t.pendown()
@@ -12,17 +12,17 @@ def field(t): #game field
     t.penup()
     t.goto(-300, -100)
     t.pendown()
-    t.goto(300, -100)  
+    t.goto(300, -100)
     t.penup()
     t.goto(-100, 300)
     t.pendown()
-    t.goto(-100, -300)   
+    t.goto(-100, -300)
     t.penup()
     t.goto(100, 300)
     t.pendown()
     t.goto(100, -300)
     t.penup()
-def cross(t): #cross
+def cross(t):
     t.setheading(45)
     xc = t.xcor()
     yc = t.ycor()
@@ -34,31 +34,75 @@ def cross(t): #cross
     t.goto(xc - 100, yc + 100)
     t.pendown()
     t.goto(xc + 100, yc - 100)
-settings(t) #use settings
-field(t) #spawn a field
-t.goto(0, 0) #go to middle of the field
-while True:
-    position = int(input())
-    match position:
-        case 1:
-            x, y = -200, 200
-        case 2:
-            x, y = 0, 200
-        case 3:
-            x, y = 200, 200
-        case 4:
-            x, y = -200, 0
-        case 5:
-            x, y = 0, 0
-        case 6:
-            x, y = 200, 0
-        case 7:
-            x, y = -200, -200
-        case 8:
-            x, y = 0, -200
-        case 9:
-            x, y = 200, -200
+    t.penup()  
+def circle_mark(t):
     t.penup()
-    t.goto(x, y)
-    cross(t)
-t.mainloop() #idk why but it has to be here (⊙_⊙)？
+    xc = t.xcor()
+    yc = t.ycor()
+    t.goto(xc, yc - 100)
+    t.pendown()
+    t.circle(100)
+    t.penup()  
+settings(t)
+field(t)
+t.goto(0, 0)
+while True:
+    inp = input("move: ")
+    match inp:
+        case "1 cross":
+            t.goto(-200, 200)
+            cross(t)
+        case "2 cross":
+            t.goto(0, 200)
+            cross(t)
+        case "3 cross":
+            t.goto(200, 200)
+            cross(t)
+        case "4 cross":
+            t.goto(-200, 0)
+            cross(t)
+        case "5 cross":
+            t.goto(0, 0)
+            cross(t)
+        case "6 cross":
+            t.goto(200, 0)
+            cross(t)
+        case "7 cross":
+            t.goto(-200, -200)
+            cross(t)
+        case "8 cross":
+            t.goto(0, -200)
+            cross(t)
+        case "9 cross":
+            t.goto(200, -200)
+            cross(t)
+        case "1 circle":
+            t.goto(-200, 200)
+            circle_mark(t)
+        case "2 circle":
+            t.goto(0, 200)
+            circle_mark(t)
+        case "3 circle":
+            t.goto(200, 200)
+            circle_mark(t)
+        case "4 circle":
+            t.goto(-200, 0)
+            circle_mark(t)
+        case "5 circle":
+            t.goto(0, 0)
+            circle_mark(t)
+        case "6 circle":
+            t.goto(200, 0)
+            circle_mark(t)
+        case "7 circle":
+            t.goto(-200, -200)
+            circle_mark(t)
+        case "8 circle":
+            t.goto(0, -200)
+            circle_mark(t)
+        case "9 circle":
+            t.goto(200, -200)
+            circle_mark(t)
+        case _:
+            print("wrong")
+t.mainloop()
