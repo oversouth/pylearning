@@ -1,10 +1,10 @@
 import turtle as t
-t.setup(600, 600)
-t.title("TicTacToe")
-def settings(t):
+t.setup(600, 600) #Resolution
+t.title("TicTacToe") #Name in the window bar
+def settings(t): #Settings(eyecandy)
     t.speed(100)
     t.pensize(6)
-def field(t):
+def field(t): #Field drawing function
     t.pencolor("black")
     t.penup()
     t.goto(-300, 100)
@@ -23,7 +23,7 @@ def field(t):
     t.pendown()
     t.goto(100, -300)
     t.penup()
-def cross(t):
+def cross(t): #Cross drawing function
     t.pencolor("red")
     t.setheading(45)
     xc = t.xcor()
@@ -37,21 +37,19 @@ def cross(t):
     t.pendown()
     t.goto(xc + 100, yc - 100)
     t.penup()  
-def circle_mark(t):
+def circle_mark(t): #Circle drawing function
     t.pencolor("blue")
+    t.penup()
     xc = t.xcor()
     yc = t.ycor()
-    t.penup()
     t.goto(xc, yc - 100)
-    t.setheading(0)
     t.pendown()
     t.circle(100)
-    t.penup()
-    t.goto(xc, yc)
-settings(t)
+    t.penup()  
+settings(t) 
 field(t)
-t.goto(0, 0)
-while True:
+t.goto(0, 0) #go to the middle of the screen(IMPORTANT!!)
+while True: #Input(controls)
     inp = input("move: ")
     match inp:
         case "1 cross":
@@ -110,4 +108,4 @@ while True:
             circle_mark(t)
         case _:
             print("wrong")
-t.mainloop()
+t.mainloop() #IMPORTANT(have no idea why)
