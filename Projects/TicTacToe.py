@@ -1,9 +1,11 @@
 import turtle as t
-t.setup(600, 600) #Resolution
-t.title("TicTacToe") #Name in the window bar
+
 def settings(t): #Settings(eyecandy)
     t.speed(100)
     t.pensize(6)
+    t.setup(600, 600) #Resolution
+    t.title("TicTacToe") #Name in the window bar
+
 def field(t): #Field drawing function
     t.pencolor("black")
     t.penup()
@@ -23,6 +25,25 @@ def field(t): #Field drawing function
     t.pendown()
     t.goto(100, -300)
     t.penup()
+
+started = True
+def checwinner(field):
+    #TODO CHECK WINNER FUNCTION 
+winner = checkwinner(area)
+if winner == 1:
+    print("crosses win")
+    started = False
+elif winner == 2:
+    print("circles win")
+    started = False
+else:
+    print("draw,no one won")
+    started = False
+area = [ #0 - empty 1 - circle 2 - cross
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+    ]
 def cross(t): #Cross drawing function
     t.pencolor("red")
     t.setheading(45)
@@ -37,6 +58,7 @@ def cross(t): #Cross drawing function
     t.pendown()
     t.goto(xc + 100, yc - 100)
     t.penup()  
+
 def circle_mark(t): #Circle drawing function
     t.pencolor("blue")
     t.penup()
@@ -44,68 +66,63 @@ def circle_mark(t): #Circle drawing function
     yc = t.ycor()
     t.goto(xc, yc - 100)
     t.pendown()
+    t.setheading(0)
     t.circle(100)
     t.penup()  
 settings(t) 
 field(t)
-t.goto(0, 0) #go to the middle of the screen(IMPORTANT!!)
-while True: #Input(controls)
+lastmove = None
+firstmove = True
+while started: #input(controls)
     inp = input("move: ")
-    match inp:
-        case "1 cross":
+    cell, shape = inp.split(" ")
+    cell = int(cell)
+    x = cell // 3
+    y = cell % 3 - 1
+    if firstmove and "cross" != shape:
+        print("wrong")
+        continue
+    else:
+        firstmove = False
+    if shape == lastmove:
+        print("wrong")
+        continue
+    if area[x][y] != 0:
+        print("wrong")
+        continue
+    else:
+        if shape == "circle":
+            area[x][y] = 2
+        else:
+            area[x][y] = 1
+
+    lastmove = shape
+    match cell:
+        case 1:
             t.goto(-200, 200)
-            cross(t)
-        case "2 cross":
+        case 2:
             t.goto(0, 200)
-            cross(t)
-        case "3 cross":
+        case 3:
             t.goto(200, 200)
-            cross(t)
-        case "4 cross":
+        case 4:
             t.goto(-200, 0)
-            cross(t)
-        case "5 cross":
+        case 5:
             t.goto(0, 0)
-            cross(t)
-        case "6 cross":
+        case 6:
             t.goto(200, 0)
-            cross(t)
-        case "7 cross":
+        case 7:
             t.goto(-200, -200)
-            cross(t)
-        case "8 cross":
+        case 8:
             t.goto(0, -200)
-            cross(t)
-        case "9 cross":
+        case 9:
             t.goto(200, -200)
-            cross(t)
-        case "1 circle":
-            t.goto(-200, 200)
-            circle_mark(t)
-        case "2 circle":
-            t.goto(0, 200)
-            circle_mark(t)
-        case "3 circle":
-            t.goto(200, 200)
-            circle_mark(t)
-        case "4 circle":
-            t.goto(-200, 0)
-            circle_mark(t)
-        case "5 circle":
-            t.goto(0, 0)
-            circle_mark(t)
-        case "6 circle":
-            t.goto(200, 0)
-            circle_mark(t)
-        case "7 circle":
-            t.goto(-200, -200)
-            circle_mark(t)
-        case "8 circle":
-            t.goto(0, -200)
-            circle_mark(t)
-        case "9 circle":
-            t.goto(200, -200)
-            circle_mark(t)
         case _:
             print("wrong")
-t.mainloop() #IMPORTANT(have no idea why)
+
+    if shape == "circle":
+        circle_mark(t)
+    elif shape == "cross":
+        cross(t)
+    else:
+        print("wrong")
+t.mainloop() 
