@@ -28,7 +28,16 @@ def field(t): #Field drawing function
 
 started = True
 def checwinner(field):
-    #TODO CHECK WINNER FUNCTION 
+    for i in range(3):
+        if field[i][0] == field[i][1] == field[i][2] != 0:
+            return field[i][0]
+        if field[0][i] == field[1][i] == field[2][i] != 0:
+            return field[0][i]
+    if field[0][0] == field[1][1] == field[2][2] != 0:
+        return field[0][0]
+    if field[0][2] == field[1][1] == field[2][0] != 0:
+        return field[0][2]
+    return 0
 winner = checkwinner(area)
 if winner == 1:
     print("crosses win")
