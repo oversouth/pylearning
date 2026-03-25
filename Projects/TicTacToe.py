@@ -1,12 +1,12 @@
 import turtle as t
 
-def settings(t): #Settings(eyecandy)
+def settings(t):
     t.speed(100)
     t.pensize(6)
-    t.setup(600, 600) #Resolution
-    t.title("TicTacToe") #Name in the window bar
+    t.setup(600, 600)
+    t.title("TicTacToe")
 
-def field(t): #Field drawing function
+def field(t):
     t.pencolor("black")
     t.penup()
     t.goto(-300, 100)
@@ -26,8 +26,7 @@ def field(t): #Field drawing function
     t.goto(100, -300)
     t.penup()
 
-started = True
-def checwinner(field):
+def checkwinner(field):
     for i in range(3):
         if field[i][0] == field[i][1] == field[i][2] != 0:
             return field[i][0]
@@ -38,22 +37,8 @@ def checwinner(field):
     if field[0][2] == field[1][1] == field[2][0] != 0:
         return field[0][2]
     return 0
-winner = checkwinner(area)
-if winner == 1:
-    print("crosses win")
-    started = False
-elif winner == 2:
-    print("circles win")
-    started = False
-else:
-    print("draw,no one won")
-    started = False
-area = [ #0 - empty 1 - circle 2 - cross
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-    ]
-def cross(t): #Cross drawing function
+
+def cross(t):
     t.pencolor("red")
     t.setheading(45)
     xc = t.xcor()
@@ -66,9 +51,9 @@ def cross(t): #Cross drawing function
     t.goto(xc - 100, yc + 100)
     t.pendown()
     t.goto(xc + 100, yc - 100)
-    t.penup()  
+    t.penup()
 
-def circle_mark(t): #Circle drawing function
+def circle_mark(t):
     t.pencolor("blue")
     t.penup()
     xc = t.xcor()
@@ -77,56 +62,60 @@ def circle_mark(t): #Circle drawing function
     t.pendown()
     t.setheading(0)
     t.circle(100)
-    t.penup()  
-settings(t) 
+    t.penup()
+
+
+area = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+]
+
+settings(t)
 field(t)
+
+started = True
 lastmove = None
 firstmove = True
-while started: #input(controls)
+
+while started:
     inp = input("move: ")
     cell, shape = inp.split(" ")
     cell = int(cell)
     x = cell // 3
     y = cell % 3 - 1
-    if firstmove and "cross" != shape:
+
+    if firstmove and shape != "cross":
         print("wrong")
         continue
     else:
         firstmove = False
+
     if shape == lastmove:
         print("wrong")
         continue
     if area[x][y] != 0:
         print("wrong")
         continue
+
+    if shape == "circle":
+        area[x][y] = 2
     else:
-        if shape == "circle":
-            area[x][y] = 2
-        else:
-            area[x][y] = 1
+        area[x][y] = 1
 
     lastmove = shape
+
     match cell:
-        case 1:
-            t.goto(-200, 200)
-        case 2:
-            t.goto(0, 200)
-        case 3:
-            t.goto(200, 200)
-        case 4:
-            t.goto(-200, 0)
-        case 5:
-            t.goto(0, 0)
-        case 6:
-            t.goto(200, 0)
-        case 7:
-            t.goto(-200, -200)
-        case 8:
-            t.goto(0, -200)
-        case 9:
-            t.goto(200, -200)
-        case _:
-            print("wrong")
+        case 1: t.goto(-200, 200)
+        case 2: t.goto(0, 200)
+        case 3: t.goto(200, 200)
+        case 4: t.goto(-200, 0)
+        case 5: t.goto(0, 0)
+        case 6: t.goto(200, 0)
+        case 7: t.goto(-200, -200)
+        case 8: t.goto(0, -200)
+        case 9: t.goto(200, -200)
+        case _: print("wrong")
 
     if shape == "circle":
         circle_mark(t)
@@ -134,4 +123,18 @@ while started: #input(controls)
         cross(t)
     else:
         print("wrong")
-t.mainloop() 
+        continue
+
+    # Check winner after every move  
+    winner = checkwinner(area)
+    if winner == 1:
+        print("crosses win")
+        started = False
+    elif winner == 2:
+        print("circles win")
+        started = False
+    elif all(area[r][c] != 0 for r in range(3) for c in range(3)):
+        print("draw, no one won")
+        started = False
+
+t.mainloop()
