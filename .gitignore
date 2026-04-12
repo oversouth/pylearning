@@ -7,3 +7,6 @@ copilot.exe
 totp.py
 .zed
 telethonbot/
+.vscode/
+*.log
+*.session
