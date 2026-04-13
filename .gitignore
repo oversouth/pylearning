@@ -10,3 +10,4 @@ telethonbot/
 .vscode/
 *.log
 *.session
+.notificator/
