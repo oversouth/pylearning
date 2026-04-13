@@ -10,4 +10,4 @@ telethonbot/
 .vscode/
 *.log
 *.session
-.ai/
+ai/
