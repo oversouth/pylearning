@@ -11,3 +11,4 @@ telethonbot/
 *.log
 *.session
 ai/
+webhooks/
