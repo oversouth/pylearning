@@ -1,12 +1,12 @@
 import turtle as t
 
-def settings(t):
-    t.speed(100)
-    t.pensize(6)
-    t.setup(600, 600)
+def settings(t): #settings,you can change the name on top bar,resolution(not reccomended) and turtle speed and size
+    t.speed(100) #SPEED of the turtle,keep it on 100 for instant
+    t.pensize(6) #THICKness of the drawing
+    t.setup(600, 600) #RESOLUTION of the window(not reccomended to change)
     t.title("TicTacToe")
 
-def field(t):
+def field(t): #main field drawing function
     t.pencolor("black")
     t.penup()
     t.goto(-300, 100)
@@ -26,7 +26,7 @@ def field(t):
     t.goto(100, -300)
     t.penup()
 
-def checkwinner(field):
+def checkwinner(field): #check who is winner function
     for i in range(3):
         if field[i][0] == field[i][1] == field[i][2] != 0:
             return field[i][0]
@@ -38,7 +38,7 @@ def checkwinner(field):
         return field[0][2]
     return 0
 
-def cross(t):
+def cross(t): #draw a cross function
     t.pencolor("red")
     t.setheading(45)
     xc = t.xcor()
@@ -53,7 +53,7 @@ def cross(t):
     t.goto(xc + 100, yc - 100)
     t.penup()
 
-def circle_mark(t):
+def circle_mark(t): #draw a circle function
     t.pencolor("blue")
     t.penup()
     xc = t.xcor()
@@ -65,7 +65,7 @@ def circle_mark(t):
     t.penup()
 
 
-area = [
+area = [ #area of the game, 0 - empty, 1 - cross, 2 - circle
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
@@ -78,7 +78,7 @@ started = True
 lastmove = None
 firstmove = True
 
-while started:
+while started: #main game loop
     inp = input("move: ")
     cell, shape = inp.split(" ")
     cell = int(cell)
@@ -125,7 +125,7 @@ while started:
         print("wrong")
         continue
 
-    # Check winner after every move  
+    # Check winner after every move
     winner = checkwinner(area)
     if winner == 1:
         print("crosses win")
