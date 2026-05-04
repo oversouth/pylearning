@@ -12,3 +12,4 @@ telethonbot/
 *.session
 ai/
 webhooks/
+tasks.txt
