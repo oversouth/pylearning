@@ -1,7 +1,7 @@
-print("todoro v1")
+print("todoro v2")
 pathoutput = "tasks.txt"
 while True:
-    userinput = input("a=add, d=delete, c=complete ,r=check tasks, q=quit: ")
+    userinput = input("a=add, d=delete, c=complete ,r=check tasks, f=fun tasks, q=quit: ")
     if userinput == "a":
         file = open(pathoutput, "a")
         task = input("enter a task: ")
@@ -41,5 +41,11 @@ while True:
         file.close()
         for t in tasks:
             print(t.strip())
+    elif userinput == "f":
+        print("fun mode")
+        file = open(pathoutput, "a")
+        task = input("enter a FUN task: ")
+        file.write("[ ] " + task[::-1] + "\n")
+        file.close()
     elif userinput == "q":
         break
