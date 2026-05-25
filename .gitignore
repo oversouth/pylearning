@@ -14,3 +14,4 @@ ai/
 webhooks/
 tasks.txt
 Projects/test.txt
+aitest.py
