@@ -14,10 +14,9 @@ def new_user(info: dict):
     pwd = info.get("password")
     
     with open(name + ".txt", "w") as file:
-        file.write("name"+" " name\n"password"+ " " pwd)
+        file.write(f"name {name}\npassword {pwd}")
 
     return {"message": "user created"}
-
 
 @app.post("/whoami")
 def whoami(info: dict):
