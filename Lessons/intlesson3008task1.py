@@ -1,0 +1,8 @@
+name = input("Enter your name: ")
+age = input("Enter your age: ")
+height = input("Enter your height in meters: ")
+clothing_style = input("Enter your clothing style: ")
+eye_color = input("Enter your eye color: ")
+favourite_fruit = input("Enter your favourite fruit: ")
+favourite_distro = input("Enter your favourite distribution: ")
+print(f"my name is {name}! i am {age} years old, {height} meters tall, and my clothing style is {clothing_style}. my eye color is {eye_color}, my favourite fruit is {favourite_fruit}, and my favourite distribution is {favourite_distro}.")

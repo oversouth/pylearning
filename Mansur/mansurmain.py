@@ -12,7 +12,7 @@ def helloworld():
 def new_user(info: dict):
     name = info.get("name")
     pwd = info.get("password")
-    
+
     with open(name + ".txt", "w") as file:
         file.write(f"name {name}\npassword {pwd}")
 
